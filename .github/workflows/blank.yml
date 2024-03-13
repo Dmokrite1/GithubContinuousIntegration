@@ -21,9 +21,11 @@ jobs:
     strategy:
       matrix:
         # Les différents OS sur lesquels faire tourner les actions
-        os: [ubuntu-latest, ubuntu-20.04, windows-2022]
+        os: [ubuntu-latest]
+        node: [node-20, node-18, node-16]
     # The type of runner that the job will run on
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}, ${{ matrix.node }}
+    
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
