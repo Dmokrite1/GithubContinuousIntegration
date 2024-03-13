@@ -22,6 +22,7 @@ jobs:
       matrix:
         # Les différents OS sur lesquels faire tourner les actions
         os: [ubuntu-latest]
+        # Les différentes version de node
         node: [20, 18, 16]
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
@@ -34,6 +35,7 @@ jobs:
       # Install node on the machine
       - uses: actions/setup-node@v4
         with:
+          # version de node définit dans la matrice test dynamiquement
           node-version: ${{ matrix.node }}
           # Install node V20
           # node-version: 20
