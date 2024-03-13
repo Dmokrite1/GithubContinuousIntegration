@@ -34,4 +34,7 @@ jobs:
           version: 8
       - run: node -v
       - run: pnpm -v
+      - run: pnpm lint
+      - run: pnpm test
+
 
