@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI/CD Tests
+name: CI/CD-Tests-github-Dmokrite
 
 # Controls when the workflow will run
 on:
@@ -42,6 +42,13 @@ jobs:
       - uses: pnpm/action-setup@v3
         with:
           version: 8
+
+      # Stocke le chemin du store de PNPM en variable d'environnement
+      #- name: Get pnpm store directory
+        #shell: bash
+        #run: |
+          #echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+          
       - run: pnpm i
       - run: node -v
       - run: pnpm -v
@@ -54,4 +61,11 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v3
-      - run: echo 'DEPLOY'
+      - run: npm publish
+        env:
+          # créer un compte sur npm pour générer un token (voir screen discord)
+          NODE_AUTH_TOKEN: 010101
+      #- uses: actions/setup-node@v4
+        #with:
+          #node-version: '20.x'
+          #registry-url: 'https://npm.pkg.github.com'
