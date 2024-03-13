@@ -22,9 +22,9 @@ jobs:
       matrix:
         # Les différents OS sur lesquels faire tourner les actions
         os: [ubuntu-latest]
-        node: [node-20, node-18, node-16]
+        node: [20, 18, 16]
     # The type of runner that the job will run on
-    runs-on: ${{ matrix.os }}, ${{ matrix.node }}
+    runs-on: ${{ matrix.os }}
     
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -34,8 +34,9 @@ jobs:
       # Install node on the machine
       - uses: actions/setup-node@v4
         with:
+          node-version: ${{ matrix.node }}
           # Install node V20
-          node-version: 20
+          # node-version: 20
       - uses: pnpm/action-setup@v3
         with:
           version: 8
